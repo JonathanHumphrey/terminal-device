@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: terminal;
+    src: url("./assets/font/VT323-Regular.ttf");
+}
