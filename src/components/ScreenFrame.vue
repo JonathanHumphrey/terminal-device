@@ -2,13 +2,6 @@
 import ScreenContent from './ScreenContent.vue';
 import Header from './Header.vue'
 
-import { reactive, computed } from 'vue'
-import router from '../router';
-
-
-
-
-
 </script>
 
 <template>
@@ -203,6 +196,7 @@ import router from '../router';
     width: 100%;
     height: 100px;
     z-index: 8;
+    padding: 3rem;
     background: linear-gradient(
         0deg,
         rgba(0, 0, 0, 0) 0%,

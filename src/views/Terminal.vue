@@ -14,7 +14,7 @@ const commands = ref([
     {
         id: 0,
         alias: 'help',
-        text: `Available Commands:\n-test\n-test`
+        text: `Available Commands:\n-help: displays available commands\n-`
     }
 ])
 const currentInput = ref('');
@@ -31,8 +31,10 @@ const processInput = () => {
     const response = processCommand(inputText);
 
     // Display the response
-    outputLines.value.push({ id: Date.now() + 1, type: 'output', text: response });
-
+    const responseLines = response.split('\n');
+    responseLines.forEach((line, index) => {
+      outputLines.value.push({ id: Date.now() + index + 1, type: 'output', text: line });
+    });
     // Clear the input for the next command
     currentInput.value = '';
     }
@@ -68,7 +70,6 @@ const processCommand = (command) => {
 
 
 <style scoped>
-.terminal{
-}
+
 
 </style>
