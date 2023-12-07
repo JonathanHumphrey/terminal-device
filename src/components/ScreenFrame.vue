@@ -19,12 +19,211 @@ import Header from './Header.vue'
                 </div>
             </div>
         </div>
+        <div class="trapezoid"></div>
+        <div class="trapezoid-2">
+          <div class="keyboard-base">
+        <div class="key">~</div>
+        <div class="key">1</div>
+        <div class="key">2</div>
+        <div class="key">3</div>
+        <div class="key">4</div>
+        <div class="key">5</div>
+        <div class="key">6</div>
+        <div class="key">7</div>
+        <div class="key">8</div>
+        <div class="key">9</div>
+        <div class="key">0</div>
+        <div class="key">-</div>
+        <div class="key">+</div>
+        <div class="key delete">Delete</div>
+        <div class="key tab">Tab</div>
+        <div class="key">Q</div>
+        <div class="key">W</div>
+        <div class="key">E</div>
+        <div class="key">R</div>
+        <div class="key">T</div>
+        <div class="key">Y</div>
+        <div class="key">U</div>
+        <div class="key">I</div>
+        <div class="key">O</div>
+        <div class="key">P</div>
+        <div class="key">[</div>
+        <div class="key">]</div>
+        <div class="key backslash">\</div>
+        <div class="key capslock">CapsLock</div>
+        <div class="key">A</div>
+        <div class="key">S</div>
+        <div class="key">D</div>
+        <div class="key">F</div>
+        <div class="key">G</div>
+        <div class="key">H</div>
+        <div class="key">J</div>
+        <div class="key">K</div>
+        <div class="key">L</div>
+        <div class="key">;</div>
+        <div class="key">'</div>
+        <div class="key return">Return</div>
+        <div class="key leftshift">Shift</div>
+        <div class="key">Z</div>
+        <div class="key">X</div>
+        <div class="key">C</div>
+        <div class="key">V</div>
+        <div class="key">B</div>
+        <div class="key">N</div>
+        <div class="key">M</div>
+        <div class="key">,</div>
+        <div class="key">.</div>
+        <div class="key">/</div>
+        <div class="key rightshift">Shift</div>
+        <div class="key leftctrl">Ctrl</div>
+        <div class="key">Alt</div>
+        <div class="key command">Command</div>
+        <div class="key space">Space</div>
+        <div class="key command">command</div>
+        <div class="key">Alt</div>
+        <div class="key">Ctrl</div>
+        <div class="key">Fn</div>
+    </div>
+        </div>
+        <div class="trapezoid-3"></div>
+        <div class="trapezoid-4"></div>
+        <div class="trapezoid-5"></div>
+
+
     </div>
 </template>
 
 <style scoped>
+.keyboard-base {
+  width: 50rem;
+    padding: 10px;
+    position: absolute;
+    bottom: -19rem;
+    left: 50%;
+    transform: translate(-50%, -50%) perspective(800px) rotateX(45deg); /* Adjust the perspective and rotation as needed */
+    background-color: rgb(197, 197, 197);
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(30, 25px);
+    grid-template-rows: repeat(5, 40px);
+    grid-gap: 1px;
+}
 
 
+
+.key {
+    background-color: rgb(142, 139, 139);
+    border: 2px solid black;
+    border-radius: 5px;
+    grid-column: span 2;
+    font-size: 15px;
+    text-align: center;
+    padding-top: 17px;
+}
+
+.key:hover {
+  border: 1px solid #eeeeee;
+  cursor: pointer;
+}
+
+.delete {
+    grid-column: span 4;
+}
+
+.tab {
+    grid-column: span 3;
+}
+
+.backslash {
+    grid-column: span 3;
+}
+
+.capslock {
+    grid-column: span 4;
+}
+
+.return {
+    grid-column: span 4;
+}
+
+.leftshift {
+    grid-column: span 5;
+}
+
+.rightshift {
+    grid-column: span 5;
+}
+
+.leftctrl {
+    grid-column: span 3;
+}
+
+.command {
+    grid-column: span 3;
+    font-size: 14px;
+}
+
+.space {
+    grid-column: span 13;
+}
+.trapezoid {
+  position: absolute;
+  bottom: -5rem;
+    border-top: 50px solid transparent;
+    border-radius: .25rem;
+    border-bottom: 10rem solid #2c2a28; /* Adjust the height and color as needed */
+    border-left: 5rem solid transparent;
+    border-right: 5rem solid transparent;
+    height: 30rem;
+    width: 80rem; /* Adjust the width as needed */
+  }
+  .trapezoid-2{
+    position: absolute;
+    bottom: -5rem;
+    border-radius: 4rem;
+    border-top: 50px solid transparent;
+    border-bottom: 11rem solid #534f4b; /* Adjust the height and color as needed */
+    border-left: 5rem solid transparent;
+    border-right: 5rem solid transparent;
+    height: 20rem;
+    width: 65rem; /* Adjust the width as needed */
+  }
+  .trapezoid-3{
+    position: absolute;
+
+    left:-6rem;
+    bottom: .5rem;
+    border-top: 50px solid transparent;
+    border-bottom: 40rem solid #2c2a28; /* Adjust the height and color as needed */
+    border-left: 6rem solid transparent;
+    border-right: 6rem solid transparent;
+    height: 5rem;
+    width: 16rem; /* Adjust the width as needed */
+    z-index: -1;
+    border-radius: 2rem;
+  }
+  .trapezoid-4{
+    position: absolute;
+
+    right:-6rem;
+    bottom: .5rem;
+    border-top: 50px solid transparent;
+    border-bottom: 40rem solid #2c2a28; /* Adjust the height and color as needed */
+    border-left: 6rem solid transparent;
+    border-right: 6rem solid transparent;
+    height: 5rem;
+    width: 16rem; /* Adjust the width as needed */
+    z-index: -1;
+    border-radius: 2rem;
+  }
+  .trapezoid-5 {
+  position: absolute;
+  bottom: -10.5rem;
+    border-radius: .25rem;
+    border-bottom: 6rem solid #252422; /* Adjust the height and color as needed */
+      width: 79.5rem; /* Adjust the width as needed */
+    z-index: -2;
+  }
 #crt:before {
     content: " ";
     display: block;
@@ -223,22 +422,24 @@ import Header from './Header.vue'
     position: relative;
     width: 100%;
     height: 67.5vmin;
-    padding: .5rem;
+    padding: 2rem;
+    margin-bottom: 5rem;
     border: 10px solid #333; /* Border color for the beveled edge */
     border-radius: 20px; /* Adjust the border-radius to control the bevel effect */
     background-color: #254425; /* Background color of the screen */
     overflow: hidden; /* Hide content outside the border */
 }
 #monitor{
-    margin: 3vmin auto;
-	padding: 5.5vmin;
+    margin: 1rem auto;
+	padding: 3vmin;
 	width: 60rem;
+  max-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background: #2f2820;
+	background: #2c2a28;
 	border-radius: 0.5rem;
-    border: solid black;
     font-family: terminal;
+    position: relative;
 }
 </style>
