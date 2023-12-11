@@ -14,7 +14,19 @@ const commands = ref([
     {
         id: 0,
         alias: 'help',
-        text: `Available Commands:\n-help: displays available commands\n-`
+        text: `Available Commands:\n-help: displays available commands\n-admin: sign into the administrator account\n-firewall: access firewall settings and status`
+    }
+    ,
+    {
+        id: 1,
+        alias: 'admin',
+        text: 'Due to a recent service interruption, the administrator state is on lockdown. Please try again in 9999999 days'
+    }
+    ,
+    {
+        id: 2,
+        alias: 'firewall',
+        text: 'Firewall has been breached by IP address: 192:0000000-1-1-%%%%%. Unable to transfer data until the breach has been resolved. Sign in as an administrator to reslove firewall settings'
     }
 ])
 const currentInput = ref('');

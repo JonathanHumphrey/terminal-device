@@ -6,7 +6,8 @@ import Header from './Header.vue'
 
 <template>
     <div id="monitor">
-        <div id="screen">
+        <div class="screen-wrap">
+          <div id="screen">
             <Header />
             <div id="crt">
                 <div class="scanline"></div>
@@ -18,6 +19,7 @@ import Header from './Header.vue'
                     </ScreenContent>
                 </div>
             </div>
+          </div>
         </div>
         <div class="trapezoid"></div>
         <div class="trapezoid-2">
@@ -119,11 +121,20 @@ import Header from './Header.vue'
     font-size: 15px;
     text-align: center;
     padding-top: 17px;
+    position: relative;
+    box-shadow:
+        -1px 1px 1px rgba(0, 0, 0, 0.2), /* top left */
+        1px 1px 1px rgba(0, 0, 0, 0.2), /* top right */
+        1px -1px 1px rgba(0, 0, 0, 0.2), /* bottom right */
+        -1px -1px 1px rgba(0, 0, 0, 0.2); /* bottom left */
 }
+
 
 .key:hover {
   border: 1px solid #eeeeee;
   cursor: pointer;
+  transform: translateY(3px); /* Adding a slight lift on hover */
+
 }
 
 .delete {
@@ -257,6 +268,7 @@ import Header from './Header.vue'
 }
 #crt {
   animation: textShadow 2s infinite;
+  
 }
 
 @keyframes textShadow {
@@ -406,6 +418,7 @@ import Header from './Header.vue'
     position: absolute;
     bottom: 100%;
     animation: scanline 10s linear infinite;
+    
 }
 @keyframes scanline {
     0% {
@@ -422,12 +435,24 @@ import Header from './Header.vue'
     position: relative;
     width: 100%;
     height: 67.5vmin;
-    padding: 2rem;
-    margin-bottom: 5rem;
-    border: 10px solid #333; /* Border color for the beveled edge */
+    padding: 1rem;
     border-radius: 20px; /* Adjust the border-radius to control the bevel effect */
     background-color: #254425; /* Background color of the screen */
     overflow: hidden; /* Hide content outside the border */
+    box-shadow: 0 0 30px 10px #56ae5672; /* Set the box-shadow for the glowing effect */
+    animation: glow 4s infinite alternate;
+    z-index: 1;
+    
+}
+.screen-wrap{
+  border: 10px solid #333; /* Border color for the beveled edge */
+  width: 100%;
+  position: relative;
+    width: 100%;
+    margin-bottom: 5rem;
+    border-radius: .5rem; 
+  z-index: 0;
+
 }
 #monitor{
     margin: 1rem auto;
@@ -441,5 +466,6 @@ import Header from './Header.vue'
 	border-radius: 0.5rem;
     font-family: terminal;
     position: relative;
+    
 }
 </style>
