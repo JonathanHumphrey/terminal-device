@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 
+
 import ScreenFrame from '../components/ScreenFrame.vue';
 
 const outputLines = ref([

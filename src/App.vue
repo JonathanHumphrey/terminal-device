@@ -1,5 +1,4 @@
 <script setup>
-import ScreenFrame from './components/ScreenFrame.vue';
 
 </script>
 

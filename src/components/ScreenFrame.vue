@@ -1,15 +1,25 @@
 <script setup>
 import ScreenContent from './ScreenContent.vue';
 import Header from './Header.vue'
+import Keyboard from './Keyboard.vue';
+
+import { useAppStore } from '../stores/AppStore';
+const appStore = useAppStore()
+
+function togglePower() {
+  
+  appStore.togglePower()
+  console.log(appStore.hasPower)
+}
 
 </script>
 
 <template>
     <div id="monitor">
         <div class="screen-wrap">
-          <div id="screen">
+          <div id="screen" v-show="appStore.hasPower">
             <Header />
-            <div id="crt">
+            <div id="crt" >
                 <div class="scanline"></div>
                 <div class="terminal">
                     <ScreenContent>
@@ -21,168 +31,94 @@ import Header from './Header.vue'
             </div>
           </div>
         </div>
-        <div class="trapezoid"></div>
+        
+        <div class="trapezoid">
+          <div class="btn-group">
+            <label class="switch">
+              <input type="checkbox" v-model="appStore.hasPower" @click="togglePower">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
         <div class="trapezoid-2">
-          <div class="keyboard-base">
-        <div class="key">~</div>
-        <div class="key">1</div>
-        <div class="key">2</div>
-        <div class="key">3</div>
-        <div class="key">4</div>
-        <div class="key">5</div>
-        <div class="key">6</div>
-        <div class="key">7</div>
-        <div class="key">8</div>
-        <div class="key">9</div>
-        <div class="key">0</div>
-        <div class="key">-</div>
-        <div class="key">+</div>
-        <div class="key delete">Delete</div>
-        <div class="key tab">Tab</div>
-        <div class="key">Q</div>
-        <div class="key">W</div>
-        <div class="key">E</div>
-        <div class="key">R</div>
-        <div class="key">T</div>
-        <div class="key">Y</div>
-        <div class="key">U</div>
-        <div class="key">I</div>
-        <div class="key">O</div>
-        <div class="key">P</div>
-        <div class="key">[</div>
-        <div class="key">]</div>
-        <div class="key backslash">\</div>
-        <div class="key capslock">CapsLock</div>
-        <div class="key">A</div>
-        <div class="key">S</div>
-        <div class="key">D</div>
-        <div class="key">F</div>
-        <div class="key">G</div>
-        <div class="key">H</div>
-        <div class="key">J</div>
-        <div class="key">K</div>
-        <div class="key">L</div>
-        <div class="key">;</div>
-        <div class="key">'</div>
-        <div class="key return">Return</div>
-        <div class="key leftshift">Shift</div>
-        <div class="key">Z</div>
-        <div class="key">X</div>
-        <div class="key">C</div>
-        <div class="key">V</div>
-        <div class="key">B</div>
-        <div class="key">N</div>
-        <div class="key">M</div>
-        <div class="key">,</div>
-        <div class="key">.</div>
-        <div class="key">/</div>
-        <div class="key rightshift">Shift</div>
-        <div class="key leftctrl">Ctrl</div>
-        <div class="key">Alt</div>
-        <div class="key command">Command</div>
-        <div class="key space">Space</div>
-        <div class="key command">command</div>
-        <div class="key">Alt</div>
-        <div class="key">Ctrl</div>
-        <div class="key">Fn</div>
-    </div>
+          <Keyboard />
         </div>
         <div class="trapezoid-3"></div>
         <div class="trapezoid-4"></div>
         <div class="trapezoid-5"></div>
 
-
     </div>
 </template>
 
 <style scoped>
-.keyboard-base {
-  width: 50rem;
-    padding: 10px;
-    position: absolute;
-    bottom: -19rem;
-    left: 50%;
-    transform: translate(-50%, -50%) perspective(800px) rotateX(45deg); /* Adjust the perspective and rotation as needed */
-    background-color: rgb(197, 197, 197);
-    border-radius: 10px;
-    display: grid;
-    grid-template-columns: repeat(30, 25px);
-    grid-template-rows: repeat(5, 40px);
-    grid-gap: 1px;
+.btn-group{
+  position: relative;
+  z-index: 1;
+}
+/* The switch - the box around the slider */
+.switch {
+  position: absolute;
+  display: inline-block;
+  top: 22rem;
+  left: 3rem;
+  width: 4rem;
+  height: 34px;
+  transform: translate(-50%, -50%) perspective(800px) rotateX(45deg); /* Adjust the perspective and rotation as needed */
 }
 
-
-
-.key {
-    background-color: rgb(142, 139, 139);
-    border: 2px solid black;
-    border-radius: 5px;
-    grid-column: span 2;
-    font-size: 15px;
-    text-align: center;
-    padding-top: 17px;
-    position: relative;
-    box-shadow:
-        -1px 1px 1px rgba(0, 0, 0, 0.2), /* top left */
-        1px 1px 1px rgba(0, 0, 0, 0.2), /* top right */
-        1px -1px 1px rgba(0, 0, 0, 0.2), /* bottom right */
-        -1px -1px 1px rgba(0, 0, 0, 0.2); /* bottom left */
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
-
-.key:hover {
-  border: 1px solid #eeeeee;
+/* The slider */
+.slider {
+  position: absolute;
   cursor: pointer;
-  transform: translateY(3px); /* Adding a slight lift on hover */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
 
 }
 
-.delete {
-    grid-column: span 4;
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
 }
 
-.tab {
-    grid-column: span 3;
+input:checked + .slider {
+  background-color: #2196F3;
 }
 
-.backslash {
-    grid-column: span 3;
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
 }
 
-.capslock {
-    grid-column: span 4;
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }
 
-.return {
-    grid-column: span 4;
-}
-
-.leftshift {
-    grid-column: span 5;
-}
-
-.rightshift {
-    grid-column: span 5;
-}
-
-.leftctrl {
-    grid-column: span 3;
-}
-
-.command {
-    grid-column: span 3;
-    font-size: 14px;
-}
-
-.space {
-    grid-column: span 13;
-}
 .trapezoid {
   position: absolute;
   bottom: -5rem;
     border-top: 50px solid transparent;
     border-radius: .25rem;
-    border-bottom: 10rem solid #2c2a28; /* Adjust the height and color as needed */
+    border-bottom: 8rem solid #2c2a28; /* Adjust the height and color as needed */
     border-left: 5rem solid transparent;
     border-right: 5rem solid transparent;
     height: 30rem;
@@ -193,11 +129,11 @@ import Header from './Header.vue'
     bottom: -5rem;
     border-radius: 4rem;
     border-top: 50px solid transparent;
-    border-bottom: 11rem solid #534f4b; /* Adjust the height and color as needed */
-    border-left: 5rem solid transparent;
-    border-right: 5rem solid transparent;
-    height: 20rem;
+    border-bottom: 10rem solid #534f4b; /* Adjust the height and color as needed */
+    border-left: 10rem solid transparent;
+    border-right: 10rem solid transparent;
     width: 65rem; /* Adjust the width as needed */
+    z-index: 0;
   }
   .trapezoid-3{
     position: absolute;
@@ -205,7 +141,7 @@ import Header from './Header.vue'
     left:-6rem;
     bottom: .5rem;
     border-top: 50px solid transparent;
-    border-bottom: 40rem solid #2c2a28; /* Adjust the height and color as needed */
+    border-bottom: 35rem solid #2c2a28; /* Adjust the height and color as needed */
     border-left: 6rem solid transparent;
     border-right: 6rem solid transparent;
     height: 5rem;
@@ -219,7 +155,7 @@ import Header from './Header.vue'
     right:-6rem;
     bottom: .5rem;
     border-top: 50px solid transparent;
-    border-bottom: 40rem solid #2c2a28; /* Adjust the height and color as needed */
+    border-bottom: 35rem solid #2c2a28; /* Adjust the height and color as needed */
     border-left: 6rem solid transparent;
     border-right: 6rem solid transparent;
     height: 5rem;
@@ -434,19 +370,21 @@ import Header from './Header.vue'
 #screen {
     position: relative;
     width: 100%;
-    height: 67.5vmin;
-    padding: 1rem;
+    height: 30rem;
+    padding: .25rem;
     border-radius: 20px; /* Adjust the border-radius to control the bevel effect */
     background-color: #254425; /* Background color of the screen */
     overflow: hidden; /* Hide content outside the border */
     box-shadow: 0 0 30px 10px #56ae5672; /* Set the box-shadow for the glowing effect */
     animation: glow 4s infinite alternate;
+    animation: turnOn 2s forwards;
     z-index: 1;
     
 }
 .screen-wrap{
   border: 10px solid #333; /* Border color for the beveled edge */
   width: 100%;
+  height: 32rem;
   position: relative;
     width: 100%;
     margin-bottom: 5rem;
@@ -458,7 +396,8 @@ import Header from './Header.vue'
     margin: 1rem auto;
 	padding: 3vmin;
 	width: 60rem;
-  max-height: 100vh;
+  max-height: 90vh;
+  height: 40rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -467,5 +406,17 @@ import Header from './Header.vue'
     font-family: terminal;
     position: relative;
     
+}
+
+@keyframes turnOn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>

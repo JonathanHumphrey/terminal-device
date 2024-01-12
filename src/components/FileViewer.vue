@@ -51,14 +51,14 @@ const files = [
 
 <template>
     <ScreenFrame>
-        <div class="mt-4" v-if="files[id]">
+        <div class="m-4" v-if="files[id]">
             <h1 class="text-xl">{{ files[id].title}}</h1>
             <div class="flex justify-between border-b border-gray-500">
-                <h2>{{ files[id].author }}</h2>
+                <h2 class="ml-5">{{ files[id].author }}</h2>
                 <h2>{{ files[id].date }}</h2>
             </div>
-            <div>
-                <p>{{ files[id].text }}</p>
+            <div class="ml-5">
+                <p class="ml-5 text-lg">{{ files[id].text }}</p>
             </div>
         </div>
     </ScreenFrame>

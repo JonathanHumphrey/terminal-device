@@ -1,6 +1,5 @@
 <script setup>
 import ScreenFrame from '../components/ScreenFrame.vue';
-import ScreenContent from '../components/ScreenContent.vue';
 </script>
 
 <template>
