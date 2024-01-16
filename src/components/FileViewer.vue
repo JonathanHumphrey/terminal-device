@@ -44,6 +44,13 @@ const files = [
         date: "10-18-2023",
         author: "Anelle Blantham",
         title: "Another Incident"
+    },
+    {
+        id: 4,
+        text: "We have been blessed with a resolution to our problems. It turns out that the data gathered on previous expeditions was being altered by a scientist by the name of Anelle Bentham. They have been releieved of duty and further reports will be published showing our TRUE findings in the cave. We will send further correspondance when necessary. ",
+        date: "10-20-2023",
+        author: "Unknown",
+        title: "Resolved"
     }
 ]
 

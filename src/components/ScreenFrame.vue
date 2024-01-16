@@ -59,11 +59,12 @@ function togglePower() {
 .switch {
   position: absolute;
   display: inline-block;
-  top: 22rem;
-  left: 3rem;
+  top: 24rem;
+  left: 0rem;
   width: 4rem;
   height: 34px;
   transform: translate(-50%, -50%) perspective(800px) rotateX(45deg); /* Adjust the perspective and rotation as needed */
+  border-radius: .5rem;
 }
 
 /* Hide default HTML checkbox */
@@ -84,7 +85,8 @@ function togglePower() {
   background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
-
+  border-radius: 2rem;
+  padding: .25rem;
 }
 
 .slider:before {
@@ -97,6 +99,7 @@ function togglePower() {
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
+  border-radius: .25rem;
 }
 
 input:checked + .slider {
@@ -123,6 +126,7 @@ input:checked + .slider:before {
     border-right: 5rem solid transparent;
     height: 30rem;
     width: 80rem; /* Adjust the width as needed */
+    z-index: -1;
   }
   .trapezoid-2{
     position: absolute;
@@ -405,7 +409,7 @@ input:checked + .slider:before {
 	border-radius: 0.5rem;
     font-family: terminal;
     position: relative;
-    
+    z-index: 1;
 }
 
 @keyframes turnOn {
